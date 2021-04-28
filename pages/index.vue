@@ -8,8 +8,6 @@
         understanding of code, and writing skills, each page contains a
         single<br />
         task, and as well as a short description of the task to be completed.
-        A<br />
-        full description of all tasks can be found in the readme.md file
       </h4>
       <div class="links">
         <a
