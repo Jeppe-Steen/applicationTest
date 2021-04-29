@@ -17,9 +17,9 @@
               width="300.13"
               height="375.91")
           g(class="cls-2")
-            path(class="cls-3"
+            path(class="cls-3" id="clapperPart"
             d="M200.29,340.87c12.79,0,25.59.13,38.38-.08,3.48-.06,4.42.83,4,4.81-2.49,22.74-18.85,40.78-38.63,42.23-22.19,1.63-40.66-13.08-45.76-36.46C156,340.9,156,340.9,165.43,340.9h34.86Z")
-            path(class="cls-3"
+            path(class="cls-3" id="bellPart"
             d="M95.57,281.9c5.51-9.08,10.52-17.87,14.38-27.41,8.25-20.36,12.16-41.81,14.09-63.86,1-12.13.33-24.32,1.45-36.44,3-32.76,27.8-62.83,57.33-69.7,22.6-5.25,43.43-1,61.91,14.17,18.11,14.83,28,35,29.84,59.78,1.17,15.67.76,31.43,2.95,47.06,3.79,27.1,11.11,52.59,26.12,74.91a11.79,11.79,0,0,1,.61,1.49Zm247.86-4.67c-16.4-17.62-27-38.64-32-63.21-3.78-18.71-3.74-37.78-4.76-56.76-1.38-25.88-9.74-48.73-25.26-68.27a105.58,105.58,0,0,0-56.73-37.41c-2.68-.72-3.56-1.92-3.41-4.9.25-4.28.05-8.58-.05-12.88-.25-10.91-9.33-22.71-22.74-21.7-10.83.83-19.64,10.49-19.78,22.81-.05,4-.19,8,0,12,.16,2.82-.7,4-3.23,4.6a94.22,94.22,0,0,0-25.91,10.6C113.25,84.24,94,118,92.82,163.67c-.35,13.32-.6,26.61-2.57,39.77-3.17,21.16-9.3,41-21.42,58.24-4.09,5.8-8.81,10.93-13.22,16.4-6.23,7.72-7.17,16.47-3.62,25.55,3.81,9.69,11.19,13.87,20.69,13.87q63.48,0,127,0v0q32.52,0,65,0c20.77,0,41.53,0,62.3,0,5.82,0,11.16-1.46,15.59-5.71a24.72,24.72,0,0,0,.87-34.6")
       video(controls autoplay="true" loop)
         source(src="~/assets/bellToll.mp4" type="video/mp4")
@@ -45,9 +45,60 @@ export default {
   width: 400px;
 }
 
+/*
+* here i have made the animation for the clapper (the part which is inside of the bell).
+* I first rotate it -15deg, then 0deg, and then 15deg, which makes it go from one side to the other side.
+* then finally I rotate it the the starting posotion which makes it get an animation that resembles the video
+*/
+@keyframes clapperAnimation {
+  0% {
+    transform: rotate(-15deg);
+  }
+  33% {
+    transform: rotate(0deg);
+  }
+  66% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}
+
+/*
+* I do the same thing for the bell body, as i did for the clapper.
+* But here i also change the origen of the transformation, som i resembles the video the most.
+*/
+@keyframes bellAnimation {
+  0% {
+    transform: rotate(20deg);
+    transform-origin: 40% 70%;
+  }
+  33% {
+    transform: rotate(0deg);
+  }
+  66% {
+    transform: rotate(-20deg);
+    transform-origin: 60% 70%;
+  }
+  100% {
+    transform: rotate(20deg);
+    transform-origin: 40% 70%;
+  }
+}
+
 .icon svg {
   width: 380px;
   height: 380px;
+}
+
+#clapperPart {
+  animation: clapperAnimation 2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+#bellPart {
+  animation: bellAnimation 2s infinite ease-in-out;
 }
 
 video {
