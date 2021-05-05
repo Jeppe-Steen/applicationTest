@@ -2,13 +2,29 @@
   div.text-wrap
     h2.title Create a component
     p.subtitle On this page is shown a screenshot of a component, the task is fairly simple. Create a component, that displays some of the data in the data property on this page. For any assets or information that are lacking you are free to interpret as you see fit. For any design that are specified and are within your ability you are expected to recreated it to the best of your ability
-    img(src="~/assets/build_component.png")
+    img(src="~/assets/build_component.png").picture
     // Build component below this line.
+
+    div.component
+      header.componentHeader
+        h3.componentHeading Institutioner
+        button.componentButton Opret ny
+      div.listContainer
+        header.listHeader
+          h4.institution Institution
+          h4.id id
+        ul.list
+          ListItem(v-for="items in list" :id="items.data[2].value" :title="items.data[1].value" :image="items.data[0].href")
 </template>
 
 <script>
+import ListItem from '~/components/listItem'
+
 export default {
   name: 'CommentPage',
+  components: {
+    ListItem,
+  },
   data() {
     return {
       list: [
@@ -58,7 +74,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .text-wrap {
   display: flex;
   justify-content: center;
@@ -66,6 +82,7 @@ export default {
   margin: 0 auto;
   flex-direction: column;
   text-align: center;
+  align-items: center;
 }
 
 .title {
@@ -84,5 +101,76 @@ export default {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+.picture {
+  width: 100%;
+}
+
+.component {
+  width: 170%;
+  height: fit-content;
+  background-color: #373a3f;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  .componentHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #303032;
+
+    .componentHeading {
+      color: #a5a4a4;
+      font-size: 0.7em;
+      text-transform: uppercase;
+    }
+
+    .componentButton {
+      padding: 7px 15px;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      background-color: orange;
+    }
+  }
+
+  .listContainer {
+    margin-top: 20px;
+
+    .listHeader {
+      display: grid;
+      grid-template: auto / 15% 30% 40% 15%;
+      grid-template-areas: ' . institution id . ';
+      font-size: 0.7em;
+      text-transform: uppercase;
+      padding: 5px 0;
+      color: #a5a4a4;
+
+      .institution {
+        width: 100%;
+        grid-area: institution;
+        display: flex;
+      }
+
+      .id {
+        grid-area: id;
+        display: flex;
+      }
+    }
+
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      gap: 10px;
+    }
+  }
 }
 </style>

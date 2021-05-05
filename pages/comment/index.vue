@@ -1,5 +1,14 @@
+<!-- 
+Page template which contains all the sites html tags.
+This will be rendered when the page loads
+
+The template is written in PUG, which is a JS library.
+PUG is an easy-to-code template engine used to code HTML in a more readable fashion
+-->
 <template lang="pug">
+  //div container that wraps all the other html tags. The container has the class "wrap"
   div.wrap
+    //div container which wraps a h2 tag with the class "comment-title" and a p tag with the class "comment-subtitle"
     div.text-wrap
       h2.comment-title Comment the code
       p.comment-subtitle Below is a small self contained component. The component is a select dropdown with a search field to filter for results. Locate the code in the project and comment each line of code to the best of your ability. If you determine a method used is built into Javascript you should still describe the functionality
