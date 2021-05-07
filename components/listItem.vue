@@ -4,14 +4,18 @@
         h4.listInstitution {{title}}
         p.listId {{ id }}
         span.listOptions
-            div.options 1
-            div.options 2
-            div.options 3
+            div.options
+              img(src="~/assets/pen.svg")
+            div.options
+              img(src="~/assets/chard.svg")
+            div.options
+              img(src="~/assets/bin.svg")
 </template>
 
 <script>
 export default {
   name: 'ListItem',
+  // Here I declare each prop, that is passed through the component. Which i can use later
   props: {
     id: {
       type: String,
@@ -70,8 +74,20 @@ export default {
       height: 30px;
       width: 30px;
       border-radius: 50%;
-      background-color: orange;
+      background: rgb(237, 66, 82);
+      background: linear-gradient(
+        45deg,
+        rgba(237, 66, 82, 1) 0%,
+        rgba(238, 93, 66, 1) 100%
+      );
       margin: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        height: 40%;
+      }
     }
   }
 }

@@ -5,6 +5,7 @@
     img(src="~/assets/build_component.png").picture
     // Build component below this line.
 
+
     div.component
       header.componentHeader
         h3.componentHeading Institutioner
@@ -14,6 +15,8 @@
           h4.institution Institution
           h4.id id
         ul.list
+          //every list item, is made out of a component, which is beeing mapped from the list array
+          //I also pass the data from each object through the component, so it can be used.
           ListItem(v-for="items in list" :id="items.data[2].value" :title="items.data[1].value" :image="items.data[0].href")
 </template>
 
@@ -135,7 +138,12 @@ export default {
       border-radius: 5px;
       border: none;
       color: #fff;
-      background-color: orange;
+      background: rgb(237, 66, 82);
+      background: linear-gradient(
+        45deg,
+        rgba(237, 66, 82, 1) 0%,
+        rgba(238, 93, 66, 1) 100%
+      );
     }
   }
 
