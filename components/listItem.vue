@@ -1,20 +1,17 @@
 <template lang="pug">
     li.listItem
-        img.listPicture(src={image})
+        img(:src="image").listPicture
         h4.listInstitution {{title}}
         p.listId {{ id }}
         span.listOptions
-            p.edit 1
-            p.view 2
-            p.delete 3
+            div.options 1
+            div.options 2
+            div.options 3
 </template>
 
 <script>
 export default {
   name: 'ListItem',
-  data() {
-    return {}
-  },
   props: {
     id: {
       type: String,
@@ -28,6 +25,9 @@ export default {
       type: String,
       default: '',
     },
+  },
+  data() {
+    return {}
   },
 }
 </script>
@@ -66,7 +66,7 @@ export default {
     display: flex;
     flex-direction: row;
 
-    p {
+    .options {
       height: 30px;
       width: 30px;
       border-radius: 50%;
