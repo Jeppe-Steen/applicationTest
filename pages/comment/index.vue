@@ -1,5 +1,5 @@
 <!-- 
-Page template which contains all the sites html tags.
+Page template which contains all the html tags.
 This will be rendered when the page loads
 
 The template is written in PUG, which is a JS library.
@@ -12,27 +12,27 @@ PUG is an easy-to-code template engine used to code HTML in a more readable fash
       p.comment-subtitle Below is a small self contained component. The component is a select dropdown with a search field to filter for results. Locate the code in the project and comment each line of code to the best of your ability. If you determine a method used is built into Javascript you should still describe the functionality
     div.component-wrapper
       div.select-search
-        // Here you make a div, where you bind a custom data attribute which is the variable id (which is a random number)
+        // Here you make a div, where you bind a custom data attribute, which is the variable id (which is a random number)
         div(:data-selectSearch='id').form-group
         // Here you make a label with the label variable as the text
         label {{ label }}
-        // Here you make a div with a onClick-event, which runs the method toggle. This will be the select box
+        // Here you make a div with an onClick-event, which executes the method toggle. This will be the selectbox
         div(@click='toggle').select-label
           // Inside the div, you make a paragraph with a custom data attribute which is the labelID variable.
-          // When a user selects a country, where will be returned a object, where the print variable will be set to the text here
+          // When a user selects a country, there will be returned an object, where the print variable will be set as the text
           p(:data-label='labelID') {{ selectedObject.print }}
           span.icon-group
             // Here you use a component called PyramidIcon
             PyramidIcon(className='icon xx-small')
         // Here you make a div with a custom data attribute which is the labelID variable
         div(:data-tar='labelID').select-container
-          // Here you make a input field which will be used as the search bar. this input field has a keydown-event which will run the function filter, when a user begins to type i the input field
+          // Here you make an input field which will be used as the search bar. this input field has a keydown-event which will execute the function filter, when a user begins to type in the input field
           // The input field also has a custom data attribute which is the lableID variable
           // The input field also has a v-model attached, which changes the value of the variable searchInput to the user typed value
           input(v-on:keyup='filter' placeholder="search" :data-input='labelID'  v-model='searchInput')
           ul
-            // Here you loop through each item in the displayedList array, after that each item gets a onclick-event which runs the function choose, where that items data gets passed through.
-            // Each item gets a key which is the items value, and it gets a custom data attribute which is the items print value.
+            // Here you loop through each item in the displayedList array, after that each item gets a onclick-event which executes the function choose, where that items data will get passed through.
+            // Each item gets a key, which is the items value, and it gets a custom data attribute which is the items print value.
             li(@click='choose(item)' v-for='item in displayedList' :key='item.value' :data-tar='item.print')
               p {{ item.print }}
               span(v-if='item.icon')
@@ -42,13 +42,13 @@ PUG is an easy-to-code template engine used to code HTML in a more readable fash
 import PyramidIcon from '~/components/pyramid'
 
 export default {
-  // Here you declare the components name
+  // Here is the components name declared
   name: 'ComponentPage',
-  // Here you declare which components that is beeing used in this component
+  // Here is the components, that will be used on the page, declared
   components: {
     PyramidIcon,
   },
-  // Here you declare all the variables that will be used in the component
+  // Here is all the variables, that will be used in the component, declared
   data() {
     return {
       passedValue: {
@@ -75,13 +75,13 @@ export default {
       id: Math.random(),
     }
   },
-  // The computed property, sets selectedObject to the passedValue
+  // The computed property, sets the value of selectedObject to the value of passedValue
   computed: {
     selectedObject() {
       return this.passedValue
     },
   },
-  // These functions whatches for a change, and then executes a function
+  // These functions watches for a change, and then executes a function
   watch: {
     // So if you change the variable editMode to something else, then this function will be executed
     editMode() {
@@ -98,14 +98,14 @@ export default {
     this.setHeight()
     this.setMode()
   },
-  // Here you declare every function that will be used in the component
+  // Here is every function that will be used in the component declared
   methods: {
     // This function handles if the user can use the select field.
     setMode() {
       // Here you declare a variable called tar, which is the element with the custom data-attribute id
       const tar = document.querySelector(`[data-selectSearch='${this.id}']`)
-      // If edit mode is false, the select field gets a class readOnly and returns false.
-      // If edit mode is ture, the select field looses the class readOnly and returns true.
+      // If editMode is false, the select field gets a class readOnly and returns false.
+      // If editMode is true, the select field looses the class readOnly and returns true.
       if (this.editMode === false) {
         tar.classList.add('readOnly')
         return false
@@ -114,7 +114,7 @@ export default {
         return true
       }
     },
-    // When this function is executed, it looks at the passed objects, if the first object.value isn't undefined, then it will be returned, else the other object will be returned.
+    // When this function is being executed, it looks at the passed objects, if the first object.value isn't undefined, then it will be returned, or else the other object will be returned.
     isPassed(object1, object2) {
       if (object1.value !== undefined) {
         return object1
@@ -122,8 +122,8 @@ export default {
         return object2
       }
     },
-    // When this function is beeing executed, it first selects the div with the custom data attribute data-tar="labelID"
-    // Then it change the div's height property using a switch, this switch looks at the length of the datalist array
+    // When this function is being executed, it first selects the div with the custom data attribute data-tar="labelID"
+    // Then it changes the div's height property using a switch, this switch looks at the length of the datalist array
     setHeight() {
       const tar = document.querySelector(`[data-tar='${this.labelID}']`)
       switch (this.dataList.length) {
@@ -154,26 +154,26 @@ export default {
       this.$emit('select-search', value)
     },
     // This function will be executed, when you choose an item on the list.
-    // When you choose an country, it passes that country through the function, and then run three functions.
-    // First it execute emit function, where it passes through the data object
-    // The it executes the toggle function
+    // When you choose a country, it passes that country through the function, and then executes three functions.
+    // First it executes the emit function, where it passes through the data object
+    // Then it executes the toggle function
     // And then it executes the changeLabel function where it passes through the objects print variable.
     choose(e) {
       this.emit(e.value)
       this.toggle()
       this.changeLabel(e.print)
     },
-    // When this functions is beeing executed, it have passed through a variable from the selected item, which wil be used to set the label value.
+    // When this function is being executed, it has passed through a variable from the selected item, which will be used to set the label value.
     changeLabel(value) {
       document.querySelector(
         `[data-label='${this.labelID}']`
       ).textContent = value
     },
-    // When this functions is beeing executed, it takes the datalist array, and filters it.
-    // It see if something in the dataList array includes what the user has typed in the search field, and if there is a mach, then it returnes that data.
-    // and then it sets the displayedList array to that data array..
-    // If there is only one mach between the datalist and the user input, then it will run three functions and set the searchInput value to null/empty.
-    // first it emits the selected value, then it changets the label to the objects print data, and then it toggels.
+    // When this functions is being executed, it takes the datalist array, and filters it.
+    // It sees if something in the dataList array includes what the user has typed in the search field, and if there is a match, then it returnes that data.
+    // and then it sets the displayedList array to that data array.
+    // If there is only one match between the datalist and the user input, then it will run three functions and set the searchInput value to null/empty.
+    // first it emits the selected value, then it changes the label to the objects print data, and then it toggels.
     filter() {
       this.displayedList = [
         // eslint-disable-next-line array-callback-return
@@ -192,7 +192,7 @@ export default {
       }
     },
     // This function can't execute if the editMode is false.
-    // This function does so the user can open the selectbox, and it has a default variable with the value false.
+    // This function does so that the user can open the selectbox, and it has a default variable with the value false.
     toggle(flag = false) {
       if (this.editMode === false) {
         return

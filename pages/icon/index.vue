@@ -46,9 +46,9 @@ export default {
 }
 
 /*
-* here i have made the animation for the clapper (the part which is inside of the bell).
-* I first rotate it -15deg, then 0deg, and then 15deg, which makes it go from one side to the other side.
-* then finally I rotate it the the starting posotion which makes it get an animation that resembles the video
+* Here I have made the animation for the clapper (the part which is inside of the bell).
+* I first rotate it -15deg, then 0deg, and then 15deg, which makes it go from one side to the other.
+* then I finally rotate it to the starting position which makes it resemble the animation in the video.
 */
 @keyframes clapperAnimation {
   0% {
@@ -66,8 +66,8 @@ export default {
 }
 
 /*
-* I do the same thing for the bell body, as i did for the clapper.
-* But here i also change the origen of the transformation, som i resembles the video the most.
+* I do the same thing for the bell body, as I did for the clapper.
+* But here I also change the origin of the transformation, so it resembles the video the most.
 */
 @keyframes bellAnimation {
   0% {

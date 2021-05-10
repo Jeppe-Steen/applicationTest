@@ -15,7 +15,7 @@
 <script>
 export default {
   name: 'ListItem',
-  // Here I declare each prop, that is passed through the component. Which i can use later
+  // Here I declare each prop, that is passed through the component. Which I can use.
   props: {
     id: {
       type: String,

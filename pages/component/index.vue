@@ -15,8 +15,8 @@
           h4.institution Institution
           h4.id id
         ul.list
-          //every list item, is made out of a component, which is beeing mapped from the list array
-          //I also pass the data from each object through the component, so it can be used.
+          //every list item, is made out of a component, which is being mapped from the list array
+          //I also pass the data from each object through the component, so it can be used later.
           ListItem(v-for="items in list" :id="items.data[2].value" :title="items.data[1].value" :image="items.data[0].href")
 </template>
 
