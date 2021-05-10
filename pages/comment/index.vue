@@ -148,7 +148,8 @@ export default {
           break
       }
     },
-    // When this function is beeing executed, the value passed through the function, will be set as the new value, in the custom data attribute called selectSearch
+    // Can't see what this function does.
+    // But it seems like it should change the value of a method called selectSearch.
     emit(value) {
       this.$emit('select-search', value)
     },
